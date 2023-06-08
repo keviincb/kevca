@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <link rel="stylesheet" type="text/css" href="contenedor.css"></a>
+    <title></title>
+    
+</head>
+<body>
+    <div id="contenedor">
+        <div id="banner"> <h3>Esta página ha sido realizada para el projecto final de Javascript </h3> 
+        </div>
+        <div id="menú">
+            <img src="carpeta/anuncio.jpg">
+        </div>
+        <div id="contenido"> <div id="aa"><a href="file:///C:/Users/kevin/Downloads/pagina%20web/galeria/Galeria.html"> Galería Dinámica </a></div>
+            <br>  
+            <div id="ab"> <a href="file:///C:/Users/kevin/Downloads/pagina%20web/formulario/formulario.html">  Presupuesto  </a> </div>
+            <div id="ac"> <a href="file:///C:/Users/kevin/Downloads/pagina%20web/contactos/contacto.html">   Contactanos       </a></div>
+        </div>
+        <div id="acceso">           
+                <a href="https://www.accuweather.com/es/es/ja%C3%A9n/306731/current-weather/306731?partner=wdg_operanrw_web%22%3EEn">  <img src="image1.png" >
+                     </a>
+        </div>
+        <div id="noticias">
+            <script>
+                function loadNews() {
+                  var xhttp = new XMLHttpRequest();
+            
+                  xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                      var news = JSON.parse(this.responseText);
+                      var newsContainer = document.getElementById("news-container");
+            
+                     
+                      newsContainer.innerHTML = "";
+            
+                      
+                      for (var i = 0; i < news.length; i++) {
+                        var newsItem = document.createElement("div");
+                        newsItem.innerHTML = `
+                          <h2>${news[i].title}</h2>
+                          <p>${news[i].content}</p>
+                          <hr>
+                        `;
+                        newsContainer.appendChild(newsItem);
+                      }
+                    }
+                  };
+            
+                  xhttp.open("GET", "noticias.json", true);
+                  xhttp.send();
+                }
+              </script>
+              <div id="botton">
+              <button onclick="loadNews()">Noticias</button> </div>
+              <div id="news-container"></div>
+        </div>
+    </div>
+</body>
+</html>
